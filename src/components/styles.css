@@ -1,0 +1,75 @@
+.button {
+    position: relative;
+    padding: 8px 14px;
+    background-color: #E45949;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .button:active {
+    background-color: #e0422e;
+  }
+  .button:hover {
+    background-color: #e0422e;
+  }
+  
+  .button__text {
+    color: #ffffff;
+    transition: all 0.2s;
+  }
+
+  .button--loading {
+    background-color: #e0422e;
+  }
+  
+  .button--loading .button__text {
+    opacity: 0;
+  }
+  
+  .button--loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+    background-color: #e0422e;
+  }
+
+  .box{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items: start;
+    flex-direction:column;
+
+  }
+
+  .videoTitle{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction:column;
+  }
+  
+  @keyframes button-loading-spinner {
+    from {
+      transform: rotate(0turn);
+    }
+  
+    to {
+      transform: rotate(1turn);
+    }
+  }

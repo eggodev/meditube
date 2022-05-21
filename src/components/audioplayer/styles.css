@@ -1,0 +1,86 @@
+html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: radial-gradient(ellipse at center, #313131 0%, #1f1f1f 100%);
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+  
+  .audio-player {
+    margin: 164px 64px;
+  }
+  
+  .controls {
+    display: flex;
+    flex-direction: row;
+    height: 6rem;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    background: red;
+    width: 100vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .playback-button {
+    transition: 0.2s;
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 32px;
+    cursor: pointer;
+  }
+  
+  .playback-button svg {
+    transition: 0.2s;
+    width: 18px;
+    height: 18px;
+    color: #54b1c1;
+  }
+  
+  .playback-button:hover svg {
+    width: 18px;
+    height: 18px;
+    color: #73e7fb;
+    transform: scale(1.03);
+  }
+  
+  .timebar {
+    flex: 1 1;
+    margin-top: 12px;
+  }
+  
+  .timebar-bar {
+    height: 4px;
+  }
+  
+  .timebar-circle {
+    background-color: #54b1c1;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    transform: translate(-50%, calc(-50% + 2px));
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  .timebar-time-info {
+    margin-top: 8px;
+    font-size: 11px;
+    color: lightgrey;
+    display: flex;
+    justify-content: space-between;
+  }
+  

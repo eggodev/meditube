@@ -1,0 +1,10 @@
+//custom color to be mapped
+$fondo : #f5e8e7;
+
+$theme-colors: (
+// add any additional color below
+  fondo: $fondo,
+// now bg-accent,btn-accent,etc.. can be called
+);
+
+@import '~bootstrap/scss/bootstrap.scss';
