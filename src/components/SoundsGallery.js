@@ -12,7 +12,7 @@ const SoundsGallery = ({ videos }) => {
     const gettingSound = async () => {
       try {
         await axios
-          .post("https://meditube.herokuapp.com", {
+          .post("https://meditube.herokuapp.com/", {
             videoID: videoId,
           })
           .then(function (response) {
