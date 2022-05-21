@@ -10,7 +10,7 @@ function App() {
       const query = "mindfulness meditacion guiada";
       try {
         await axios
-          .get("http://localhost:4000/", { params: { query: query } })
+          .get("https://meditube.herokuapp.com/", { params: { query: query } })
           .then(function (response) {
             setVideos(response.data.message);
             localStorage.setItem(
@@ -37,7 +37,9 @@ function App() {
           <h1 className="title">
             <i className="fa-solid fa-brain">&nbsp;</i>Meditube
           </h1>
-          <h4 className="fw-light">Elige un audio para disfrutar meditando...</h4>
+          <h4 className="fw-light">
+            Elige un audio para disfrutar meditando...
+          </h4>
         </form>
       </div>
       <div className="bottom_container">
