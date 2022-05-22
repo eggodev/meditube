@@ -1,4 +1,4 @@
-.button {
+.button-play {
     position: relative;
     padding: 8px 14px;
     background-color: #E45949;
@@ -7,11 +7,21 @@
     border-radius: 50%;
     cursor: pointer;
   }
+
+.button-microphone{
+  position: relative;
+  padding: 8px 14px;
+  background-color: #202f4b;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
   
-  .button:active {
+  .button-play:active {
     background-color: #e0422e;
   }
-  .button:hover {
+  .button-play:hover {
     background-color: #e0422e;
   }
   
@@ -20,15 +30,15 @@
     transition: all 0.2s;
   }
 
-  .button--loading {
+  .button-loading {
     background-color: #e0422e;
   }
   
-  .button--loading .button__text {
+  .button-loading .button__text {
     opacity: 0;
   }
   
-  .button--loading::after {
+  .button-loading::after {
     content: "";
     position: absolute;
     width: 16px;

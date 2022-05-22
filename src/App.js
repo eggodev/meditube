@@ -10,6 +10,7 @@ function App() {
       const query = "mindfulness meditacion guiada";
       try {
         await axios
+          //.get("http://localhost:4000/", { params: { query: query } })
           .get("https://meditube.herokuapp.com/", { params: { query: query } })
           .then(function (response) {
             setVideos(response.data.message);

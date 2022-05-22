@@ -4,8 +4,12 @@ import useAudio from "./useAudio";
 import TimeBar from "./TimeBar";
 import PlaybackButton from "./PlaybackButton";
 
-function AudioPlayer({ audio }) {
+function AudioPlayer({ audio, video, setVideo }) {
   const [audioElement, audioProps] = useAudio(audio.message);
+
+  useEffect(() => {
+    !audioProps.isLoading && setVideo({ ...video, play: true });
+  }, [audioProps.isLoading]);
 
   return (
     <div className="controls">
