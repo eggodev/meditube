@@ -36,14 +36,13 @@ const SoundsGallery = ({ videos, setVideos }) => {
     const query = "mindfulness meditacion guiada";
     try {
       await axios
-        .get("http://localhost:4000/", {
+        .get("https://meditube.herokuapp.com/", {
           params: {
             query: query,
             maxResults: 50,
             nextPageToken: videos.nextPageToken,
           },
         })
-        //.get("https://meditube.herokuapp.com/", { params: { query: query } })
         .then(function (response) {
           setVideos({
             items: [...videos.items, ...response.data.items],
@@ -65,8 +64,7 @@ const SoundsGallery = ({ videos, setVideos }) => {
     const gettingSound = async () => {
       try {
         await axios
-          .post("http://localhost:4000", {
-            //.post("https://meditube.herokuapp.com/", {
+          .post("https://meditube.herokuapp.com", {
             videoID: video.data.id.videoId,
           })
           .then(function (response) {

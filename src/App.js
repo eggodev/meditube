@@ -23,10 +23,9 @@ function App() {
     const query = "mindfulness meditacion guiada";
     try {
       await axios
-        .get("http://localhost:4000/", {
+        .get("https://meditube.herokuapp.com/", {
           params: { query: query, maxResults: 50, nextPageToken: undefined },
         })
-        //.get("https://meditube.herokuapp.com/", { params: { query: query } })
         .then(function (response) {
           setVideos({
             items: response.data.items,
