@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/meditube/static/css/main.452a1bf6.css",
-    "main.js": "/meditube/static/js/main.79a0300f.js",
+    "main.js": "/meditube/static/js/main.187daf0b.js",
     "index.html": "/meditube/index.html",
     "main.452a1bf6.css.map": "/meditube/static/css/main.452a1bf6.css.map",
-    "main.79a0300f.js.map": "/meditube/static/js/main.79a0300f.js.map"
+    "main.187daf0b.js.map": "/meditube/static/js/main.187daf0b.js.map"
   },
   "entrypoints": [
     "static/css/main.452a1bf6.css",
-    "static/js/main.79a0300f.js"
+    "static/js/main.187daf0b.js"
   ]
 }
