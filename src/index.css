@@ -141,3 +141,12 @@ body{
     width: 50%;
   }
 }
+
+.footer{
+  color: #f5e8e7;
+  background-color: #202f4b;
+}
+
+.footer a{
+  color: #f5e8e7;
+}

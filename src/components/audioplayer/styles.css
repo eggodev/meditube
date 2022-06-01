@@ -1,44 +1,81 @@
-html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: radial-gradient(ellipse at center, #313131 0%, #1f1f1f 100%);
-    background-repeat: no-repeat;
-    height: 100vh;
-  }
-  
-  .audio-player {
-    margin: 164px 64px;
-  }
-  
-  .controls {
-    display: flex;
-    flex-direction: row;
-    height: 6rem;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    justify-content: center;
-    background: red;
-    width: 100vw;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+.view {
+  height: 100%; }
+
+#mobile-box {
+  width: 360px; }
+
+.gradient-card {
+  border-radius: 8px;
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(220, 66, 37, 0.5)), color-stop(100%, rgba(0, 47, 75, 0.5)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0, 47, 75, 0.5) 0%, rgba(220, 66, 37, 0.5) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0, 47, 75, 0.5) 0%, rgba(220, 66, 37, 0.5) 100%);
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 47, 75, 0.5)), to(rgba(220, 66, 37, 0.5)));
+  background: linear-gradient(to bottom, rgba(0, 47, 75, 0.5) 0%, rgba(220, 66, 37, 0.5) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#002f4b', endColorstr='#00000000', GradientType=0);
+  /* IE6-9 */ }
+
+.card {
+  -webkit-border-top-radius: 0px;
+  -webkit-border-bottom-radius: 10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px; 
+  border-bottom-left-radius: 10px; 
+  border-bottom-right-radius: 10px; 
+  background:#efeeee;
+}
+
+
+.card h5 a {
+  color: #0d47a1;
+}
+.card h5 a:hover {
+  color: #072f6b;
+}
+
+#pButton {
+  float: left; }
+
+#timeline {
+  width: 90%;
+  height: 2px;
+  margin-top: 20px;
+  margin-left: 10px;
+  float: left;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.3); }
+
+#pButton {
+  margin-top: 12px;
+  cursor: pointer; }
+
+#playhead {
+  width: 8px;
+  height: 8px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin-top: -3px;
+  background: black;
+  cursor: pointer; }
+
   
   .playback-button {
-    transition: 0.2s;
     width: 50px;
     height: 50px;
-    border: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    margin-right: 32px;
     cursor: pointer;
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.1),
+    -6px -6px 6px rgba(255,255,255,0.6);
+    transition:all 0.3s ease-in;
   }
   
   .playback-button svg {
@@ -79,8 +116,11 @@ html {
   .timebar-time-info {
     margin-top: 8px;
     font-size: 11px;
-    color: lightgrey;
+    color: grey;
     display: flex;
     justify-content: space-between;
   }
-  
+
+  .custom-modal {
+    border: 0;
+  }

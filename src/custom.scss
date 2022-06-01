@@ -1,9 +1,11 @@
 //custom color to be mapped
-$fondo : #f5e8e7;
+$background : #f5e8e7;
+$button: #4e537b;
 
 $theme-colors: (
 // add any additional color below
-  fondo: $fondo,
+  bgColor: $background,
+  btnColor: $button,
 // now bg-accent,btn-accent,etc.. can be called
 );
 
