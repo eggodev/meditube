@@ -25,6 +25,14 @@ function AudioPlayer({ audio, video, setVideo, setAudio }) {
       centered
     >
       <div className="mask gradient-card align-items-center">
+        <div className="position-absolute d-flex justify-content-end" style={{top:"10px", right:"10px"}}>
+          <button
+            type="button"
+            onClick={handleClose}
+            className="btn-close btn-close-white"
+            aria-label="Close"
+          ></button>
+        </div>
         <div className="container d-flex justify-content-center my-5 mb-5">
           <div id="mobile-box">
             {typeof audio.success != "undefined" && !audio.success ? (
@@ -43,7 +51,7 @@ function AudioPlayer({ audio, video, setVideo, setAudio }) {
                   <div className="shadow-sm rounded-3">
                     <div>
                       <img
-                        className="card-img-top"
+                        className="card-img-top rounded-top"
                         src={video.data.snippet.thumbnails.medium.url}
                         alt="meditation"
                         border="0"
