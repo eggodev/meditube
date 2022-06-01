@@ -11,7 +11,7 @@ const SkeletonShadow = () => {
           {Array.from(new Array(12)).map((item, index) => (
             <div key={index} className="col-xl-4 col-lg-4 col-md-6 mb-4">
               <div className="box bg-bgColor rounded shadow">
-                <Skeleton variant="rectangular" width={324} height={180} />
+                <Skeleton variant="rectangular" width="100%" height={180} />
                 <div className="container-fluid mt-3 px-4">
                   <Skeleton />
                   <Skeleton width="60%" />
