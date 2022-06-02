@@ -15,9 +15,14 @@ body{
 .top-container{
   font-family: 'Roboto', sans-serif;
   color: #f5e8e7;
-  height: 11rem;
+  height: 35vh;
+  width: 100%;
   background-color: #202f4b;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5px;
 }
 
 .title{
@@ -33,14 +38,12 @@ body{
 
 #form{
   width: 600px;
-  height: 9rem;
+  height: 7rem;
   margin: auto;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
-  padding-top: 20px;
 }
 
 #form h1{
@@ -149,4 +152,8 @@ body{
 
 .footer a{
   color: #f5e8e7;
+}
+
+.search {
+  margin-bottom: 2rem;
 }

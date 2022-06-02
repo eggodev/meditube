@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SoundsGallery from "./components/SoundsGallery";
 import SkeletonShadow from "./components/SkeletonShadow";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
 
 function App() {
   const [videos, setVideos] = useState({
@@ -10,17 +14,22 @@ function App() {
     error: false,
   });
 
+  const [search, setSearch] = useState({ term: "", active: false });
+
   useEffect(() => {
-    const videoslS = JSON.parse(localStorage.getItem("videoslS"));
-    if (videoslS) {
-      setVideos(videoslS);
-    } else {
+    if (!videos.items) {
       getVideos();
     }
-  }, []);
+  }, [videos.items]);
+
+  useEffect(() => {
+    if (search.active) {
+      setVideos({ items: false, nextPageToken: null, error: false });
+    }
+  }, [search.active]);
 
   const getVideos = async () => {
-    const query = "mindfulness meditacion guiada";
+    const query = `mindfulness meditacion guiada ${search.term}`;
     try {
       await axios
         .get("https://meditube.herokuapp.com/", {
@@ -43,6 +52,11 @@ function App() {
     }
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setSearch({ ...search, active: true });
+  };
+
   return (
     <div className="d-flex flex-column min-vh-100">
       <div className="top-container">
@@ -54,6 +68,30 @@ function App() {
             Elige un audio para disfrutar meditando...
           </h4>
         </form>
+        <div className="search">
+          <Paper
+            component="form"
+            onSubmit={onSubmit}
+            sx={{
+              p: "2px 2px",
+              display: "flex",
+              alignItems: "center",
+              width: 300,
+            }}
+          >
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="Ej: para dormir, ansiedad..."
+              inputProps={{ "aria-label": "search" }}
+              onChange={(e) =>
+                setSearch({ term: e.target.value, active: false })
+              }
+            />
+            <IconButton type="submit" sx={{ p: "5px" }} aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          </Paper>
+        </div>
       </div>
       <div className="container-fluid">
         {!videos.items && !videos.error && <SkeletonShadow />}
