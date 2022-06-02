@@ -15,14 +15,13 @@ body{
 .top-container{
   font-family: 'Roboto', sans-serif;
   color: #f5e8e7;
-  height: 35vh;
+  height: 15rem;
   width: 100%;
   background-color: #202f4b;
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 5px;
 }
 
 .title{
@@ -38,7 +37,7 @@ body{
 
 #form{
   width: 600px;
-  height: 7rem;
+  height: 6rem;
   margin: auto;
   display: flex;
   justify-content: flex-end;
