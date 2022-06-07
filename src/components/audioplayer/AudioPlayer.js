@@ -10,7 +10,6 @@ function AudioPlayer({ audio, video, setVideo, setAudio }) {
   const [audioElement, audioProps] = useAudio(audio.message);
 
   useEffect(() => {
-    console.log("entro aca cuantas veces");
     !audioProps.isLoading && setVideo({ ...video, play: true });
   }, [audioProps.isLoading]);
 
@@ -25,7 +24,10 @@ function AudioPlayer({ audio, video, setVideo, setAudio }) {
       centered
     >
       <div className="mask gradient-card align-items-center">
-        <div className="position-absolute d-flex justify-content-end" style={{top:"10px", right:"10px"}}>
+        <div
+          className="position-absolute d-flex justify-content-end"
+          style={{ top: "10px", right: "10px" }}
+        >
           <button
             type="button"
             onClick={handleClose}

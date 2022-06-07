@@ -11,6 +11,7 @@ function App() {
   const [videos, setVideos] = useState({
     items: false,
     nextPageToken: null,
+    length: null,
     error: false,
   });
 
@@ -24,7 +25,12 @@ function App() {
 
   useEffect(() => {
     if (search.active) {
-      setVideos({ items: false, nextPageToken: null, error: false });
+      setVideos({
+        items: false,
+        nextPageToken: null,
+        length: null,
+        error: false,
+      });
     }
   }, [search.active]);
 
@@ -32,13 +38,14 @@ function App() {
     const query = `mindfulness meditacion guiada ${search.term}`;
     try {
       await axios
-        .get("https://meditube.herokuapp.com/", {
+        .get("https://meditube.herokuapp.com", {
           params: { query: query, maxResults: 50, nextPageToken: undefined },
         })
         .then(function (response) {
           setVideos({
             items: response.data.items,
             nextPageToken: response.data.nextPageToken,
+            length: response.data.length,
             error: response.data.error,
           });
           /*

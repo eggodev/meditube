@@ -36,7 +36,7 @@ const SoundsGallery = ({ videos, setVideos }) => {
     const query = "mindfulness meditacion guiada";
     try {
       await axios
-        .get("https://meditube.herokuapp.com/", {
+        .get("https://meditube.herokuapp.com", {
           params: {
             query: query,
             maxResults: 50,
@@ -47,6 +47,7 @@ const SoundsGallery = ({ videos, setVideos }) => {
           setVideos({
             items: [...videos.items, ...response.data.items],
             nextPageToken: response.data.nextPageToken,
+            length: [...videos.length, ...response.data.length],
             error: response.data.error,
           });
           /*
@@ -116,6 +117,27 @@ const SoundsGallery = ({ videos, setVideos }) => {
     return str2;
   };
 
+  const showDuration = (videoId) => {
+    if (videos.items) {
+      const item = videos.length.find((video) => video.id === videoId);
+      const duration = `${parseInt(
+        ((parseInt(item.duration.hours) > 0
+          ? parseInt(item.duration.hours) * 3600000
+          : 0) +
+          (parseInt(item.duration.minutes) > 0
+            ? parseInt(item.duration.minutes) * 60000
+            : 0) +
+          (parseInt(item.duration.seconds) > 0
+            ? parseInt(item.duration.seconds) * 1000
+            : 0)) /
+          60000
+      )} minutos`;
+
+      return duration;
+    }
+    return "cero";
+  };
+
   return (
     <>
       <div className="container">
@@ -131,36 +153,42 @@ const SoundsGallery = ({ videos, setVideos }) => {
                       className="img-fluid card-img-top"
                     />
                     <div className="p-4 videoTitle">
-                      <h6 className="fw-bolder">
-                        {formatString(item.snippet.title)}
-                      </h6>
+                      <div className="container-fluid m-0 p-0">
+                        <h6 className="fw-bolder p-0 m-0">
+                          {formatString(item.snippet.title)}
+                        </h6>
+                        <p className="p-0 small">
+                          {showDuration(item.id.videoId)}
+                        </p>
+                      </div>
+
                       <p className="small text-muted mb-0">
                         {item.snippet.description}
                       </p>
-                      <div className="d-flex justify-content-center mt-4">
-                        {(!video.play || video.key !== key) && (
-                          <button
-                            type="button"
-                            className="button-play"
-                            onClick={(e) => handlingVideoData(e, item, key)}
-                          >
-                            <span className="button__text">
-                              <i className="fa-solid fa-play"></i>
-                            </span>
-                          </button>
-                        )}
-                        {video.play && video.key === key && (
-                          <button
-                            type="button"
-                            className="button-microphone"
-                            onClick={(e) => handlingVideoData(e, item, key)}
-                          >
-                            <span className="button__text">
-                              <i className="fa-solid fa-microphone"></i>
-                            </span>
-                          </button>
-                        )}
-                      </div>
+                    </div>
+                    <div className="container-fluid d-flex justify-content-center mb-3">
+                      {(!video.play || video.key !== key) && (
+                        <button
+                          type="button"
+                          className="button-play"
+                          onClick={(e) => handlingVideoData(e, item, key)}
+                        >
+                          <span className="button__text">
+                            <i className="fa-solid fa-play"></i>
+                          </span>
+                        </button>
+                      )}
+                      {video.play && video.key === key && (
+                        <button
+                          type="button"
+                          className="button-microphone"
+                          onClick={(e) => handlingVideoData(e, item, key)}
+                        >
+                          <span className="button__text">
+                            <i className="fa-solid fa-microphone"></i>
+                          </span>
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
