@@ -126,7 +126,7 @@ function App() {
       <div className="top-container">
         <form method="POST" id="form">
           <h1 className="title">
-            <i className="fa-solid fa-brain">&nbsp;</i>Meditube
+            <i className="fa-solid fa-heart-pulse">&nbsp;</i>Meditube
           </h1>
           <h4 className="fw-light">
             Elige un audio para disfrutar meditando...
