@@ -83,7 +83,7 @@ function App() {
     }
     try {
       await axios
-        .get("http://localhost:4000", {
+        .get("https://meditube.herokuapp.com", {
           params: {
             query: videos.query,
             maxResults: 50,

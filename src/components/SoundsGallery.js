@@ -54,7 +54,7 @@ const SoundsGallery = ({ videos, setVideos }) => {
     }
     try {
       await axios
-        .get("http://localhost:4000", {
+        .get("https://meditube.herokuapp.com", {
           params: {
             query: videos.query,
             maxResults: 50,
@@ -85,7 +85,7 @@ const SoundsGallery = ({ videos, setVideos }) => {
     const gettingSound = async () => {
       try {
         await axios
-          .post("http://localhost:4000", {
+          .post("https://meditube.herokuapp.com", {
             videoID: video.data.id.videoId,
           })
           .then(function (response) {
