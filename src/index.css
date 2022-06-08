@@ -156,3 +156,8 @@ body{
 .search {
   margin-bottom: 2rem;
 }
+
+.duration{
+  color:#4e537b;
+  font-weight:bold;
+}

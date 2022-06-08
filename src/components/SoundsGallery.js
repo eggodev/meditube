@@ -70,11 +70,6 @@ const SoundsGallery = ({ videos, setVideos }) => {
             length: [...videos.length, ...response.data.length],
             error: response.data.error,
           });
-          /*
-          localStorage.setItem(
-            "videoslS",
-            JSON.stringify(response.data.message)
-          );*/
         });
     } catch (error) {
       console.log(error);
@@ -177,7 +172,7 @@ const SoundsGallery = ({ videos, setVideos }) => {
                         <h6 className="fw-bolder p-0 m-0">
                           {formatString(item.snippet.title)}
                         </h6>
-                        <p className="p-0 small">
+                        <p className="p-0 small duration">
                           {showDuration(item.id.videoId)}
                         </p>
                       </div>

@@ -99,11 +99,6 @@ function App() {
             length: response.data.length,
             error: response.data.error,
           });
-          /*
-          localStorage.setItem(
-            "videoslS",
-            JSON.stringify(response.data.message)
-          );*/
         });
     } catch (error) {
       console.log(error);
