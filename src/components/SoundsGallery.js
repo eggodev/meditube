@@ -33,18 +33,38 @@ const SoundsGallery = ({ videos, setVideos }) => {
   }, [slice]);
 
   const getMoreVideos = async () => {
-    const query = "mindfulness meditacion guiada";
+    let videoLength = null;
+    switch (videos.duration) {
+      case 33.33:
+        videoLength = "short";
+        console.log("short");
+        break;
+      case 66.66:
+        videoLength = "medium";
+        console.log("medium");
+        break;
+      case 100:
+        videoLength = "long";
+        console.log("long");
+        break;
+      default:
+        videoLength = "any";
+        console.log("any");
+        break;
+    }
     try {
       await axios
-        .get("https://meditube.herokuapp.com", {
+        .get("http://localhost:4000", {
           params: {
-            query: query,
+            query: videos.query,
             maxResults: 50,
+            duration: videoLength,
             nextPageToken: videos.nextPageToken,
           },
         })
         .then(function (response) {
           setVideos({
+            ...videos,
             items: [...videos.items, ...response.data.items],
             nextPageToken: response.data.nextPageToken,
             length: [...videos.length, ...response.data.length],
@@ -65,7 +85,7 @@ const SoundsGallery = ({ videos, setVideos }) => {
     const gettingSound = async () => {
       try {
         await axios
-          .post("https://meditube.herokuapp.com", {
+          .post("http://localhost:4000", {
             videoID: video.data.id.videoId,
           })
           .then(function (response) {

@@ -6,16 +6,42 @@ import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+
+const marks = [
+  {
+    value: 0,
+    label: "Todos",
+  },
+  {
+    value: 33.33,
+    label: "< 4min",
+  },
+  {
+    value: 66.66,
+    label: "4 - 20min",
+  },
+  {
+    value: 100,
+    label: "> 20min",
+  },
+];
 
 function App() {
   const [videos, setVideos] = useState({
+    query: "mindfulness meditacion guiada",
+    search: false,
     items: false,
     nextPageToken: null,
+    duration: null,
     length: null,
     error: false,
   });
 
-  const [search, setSearch] = useState({ term: "", active: false });
+  useEffect(() => {
+    console.log(videos);
+  }, [videos]);
 
   useEffect(() => {
     if (!videos.items) {
@@ -24,25 +50,50 @@ function App() {
   }, [videos.items]);
 
   useEffect(() => {
-    if (search.active) {
+    if (videos.search) {
       setVideos({
+        ...videos,
         items: false,
         nextPageToken: null,
         length: null,
         error: false,
       });
     }
-  }, [search.active]);
+  }, [videos.search]);
 
   const getVideos = async () => {
-    const query = `mindfulness meditacion guiada ${search.term}`;
+    let videoLength = null;
+    switch (videos.duration) {
+      case 33.33:
+        videoLength = "short";
+        console.log("short");
+        break;
+      case 66.66:
+        videoLength = "medium";
+        console.log("medium");
+        break;
+      case 100:
+        videoLength = "long";
+        console.log("long");
+        break;
+      default:
+        videoLength = "any";
+        console.log("any");
+        break;
+    }
     try {
       await axios
-        .get("https://meditube.herokuapp.com", {
-          params: { query: query, maxResults: 50, nextPageToken: undefined },
+        .get("http://localhost:4000", {
+          params: {
+            query: videos.query,
+            maxResults: 50,
+            duration: videoLength,
+            nextPageToken: undefined,
+          },
         })
         .then(function (response) {
           setVideos({
+            ...videos,
             items: response.data.items,
             nextPageToken: response.data.nextPageToken,
             length: response.data.length,
@@ -61,7 +112,18 @@ function App() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setSearch({ ...search, active: true });
+    setVideos({ ...videos, search: true });
+  };
+
+  const changeVideoDuration = (e, value) => {
+    setVideos({
+      ...videos,
+      items: false,
+      nextPageToken: null,
+      duration: value,
+      length: null,
+      error: false,
+    });
   };
 
   return (
@@ -91,7 +153,14 @@ function App() {
               placeholder="Ej: para dormir, ansiedad..."
               inputProps={{ "aria-label": "search" }}
               onChange={(e) =>
-                setSearch({ term: e.target.value, active: false })
+                setVideos({
+                  ...videos,
+                  query:
+                    e.target.value === ""
+                      ? "mindfulness meditacion guiada"
+                      : "mindfulness meditacion guiada " + e.target.value,
+                  search: false,
+                })
               }
             />
             <IconButton type="submit" sx={{ p: "5px" }} aria-label="search">
@@ -101,6 +170,18 @@ function App() {
         </div>
       </div>
       <div className="container-fluid">
+        <div className="mb-4 d-flex justify-content-center">
+          <Box sx={{ width: 300 }}>
+            <Slider
+              aria-label="Restricted values"
+              defaultValue={0}
+              onChange={changeVideoDuration}
+              step={null}
+              valueLabelDisplay="off"
+              marks={marks}
+            />
+          </Box>
+        </div>
         {!videos.items && !videos.error && <SkeletonShadow />}
         {videos.items ? (
           videos.items.length > 0 ? (
